@@ -6,6 +6,7 @@ console.log(new Potion());
 
 const Player = require("../Player");
 
+//These are all the tests being run
 
 test('creates a player object', () => {
   const player = new Player('Dave');
@@ -58,3 +59,34 @@ test("subtracts from player's health", () => {
   const player = new Player('Marcus');
   const oldHealth = player.health; 
 })
+
+test("gets player's attack value", () => {
+  const player = new Player('Dave');
+  player.strength = 10;
+
+  expect(player.getAttackValue()).toBeGreaterThanOrEqual(5);
+  expect(player.getAttackValue()).toBeLessThanOrEqual(15);
+})
+
+// this is to check to see if a potion was added correctly
+
+test('adds a potion to the inventory', () => {
+  const player = new Player('Dave');
+  const oldCount = player.inventory.length;
+
+  player.addPotion(new Potion());
+
+  expect(player.inventory.length).toBeGreaterThan(oldCount);
+});
+
+// removing the correct potion 
+
+test('uses a potion from inventory', () => {
+  const player = new Player('Marcus');
+  player.inventory = [new Potion(), new Potion(), new Potion()];
+  const oldCount = player.inventory.length;
+
+  player.usePotion(1);
+
+  expect(player.inventory.length).toBeLessThan(oldCount);
+});
