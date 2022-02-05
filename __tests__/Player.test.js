@@ -5,7 +5,7 @@ jest.mock('../Potion');
 console.log(new Potion());
 
 const Player = require("../Player");
-const { expect } = require('@jest/globals');
+
 
 test('creates a player object', () => {
   const player = new Player('Dave');
@@ -41,4 +41,20 @@ test("gets player's health value", () => {
   const player = new Player('Marcus');
 
   expect(player.getHealth()).toEqual(expect.stringContaining(player.health.toString()));
+});
+
+
+test('checks if player is alive or not', () => {
+  const player = new Player('Marcus');
+
+  expect(player.isAlive()).toBeTruthy();
+
+  player.health = 0;
+
+  expect(player.isAlive()).toBeFalsy();
+});
+
+test("subtracts from player's health", () => {
+  const player = new Player('Marcus');
+  const oldHealth = player.health; 
 })
