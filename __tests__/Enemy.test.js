@@ -1,7 +1,7 @@
-const Enemy = require("../Enemy.js");
-const Potion = require("../Potion");
+const Enemy = require("../lib/Enemy.js");
+const Potion = require("../lib/Potion");
 
-jest.mock('../Potion.js');
+jest.mock('../lib/Potion.js');
 
 test('creates an enemy object', () => {
     const enemy = new Enemy('goblin', 'sword');

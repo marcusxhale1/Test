@@ -1,10 +1,10 @@
-const Potion = require('../Potion');
+const Potion = require('../lib/Potion');
 
-jest.mock('../Potion');
+jest.mock('../lib/Potion');
 
 console.log(new Potion());
 
-const Player = require("../Player");
+const Player = require("../lib/Player");
 
 //These are all the tests being run
 
